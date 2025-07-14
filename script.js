@@ -1,7 +1,12 @@
-const newBook = document.querySelector('.new-book-button')
-const dialog = document.querySelector('#dialog')
-const cancelButton = document.querySelector(".cancel")
-console.log(dialog)
+const newBook = document.querySelector('.new-book-button');
+const dialog = document.querySelector('#dialog');
+const cancelButton = document.querySelector(".cancel");
+const bookTitle = document.querySelector('#title');
+const bookAuthor = document.querySelector('#author');
+const bookPages = document.querySelector('#pages');
+const bookRead = document.querySelector('#read')
+const form = document.querySelector('.form')
+
 
     
 const myLibrary = [];
@@ -15,7 +20,13 @@ function Book (title,author,pages,read) {
 }
 
 function addBookToLibrary() {
-    const Book1 = new Book('Grse','Nenad',200,'Yes')
+    form.addEventListener('submit', function (e) {
+        e.preventDefault()
+        console.log(bookAuthor.value)
+        dialog.close()
+    })
+
+    const Book1 = new Book(bookTitle,bookAuthor,bookPages,bookRead)
     myLibrary.push(Book1)
     console.log(myLibrary)
     

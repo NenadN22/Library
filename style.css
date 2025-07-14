@@ -3,7 +3,10 @@
     margin: 0;
     box-sizing: border-box;
 }
-
+body h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
 input,label {
     display: block;
@@ -12,6 +15,7 @@ input,label {
 .container {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 .read {
     display: flex;
