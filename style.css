@@ -1,0 +1,40 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+input,label {
+    display: block;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+.read {
+    display: flex;
+    gap: 5px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+#dialog{
+    position:fixed;
+    width: 15%;
+    left: 50%;
+    top: 50%;
+    border: 1px solid black;
+    padding: 20px;
+    -ms-transform: translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+
+}
+
