@@ -5,7 +5,8 @@
 }
 body h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 1em;
+    margin-top: 1em;
 }
 
 input,label {
@@ -39,6 +40,20 @@ form {
     -moz-transform:translate(-50%,-50%);
     -webkit-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
+
+}
+.card {
+    background-color: rgb(139, 139, 139);
+    padding: 1em;
+
+}
+.books-container {
+    display: grid;
+    background-color: aqua;
+    margin: 3%;
+    grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
+    grid-template-rows: auto;
+    gap: 20px;
 
 }
 
