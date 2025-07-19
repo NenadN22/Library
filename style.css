@@ -18,7 +18,7 @@ input,label {
     justify-content: center;
     align-items: center;
 }
-.read {
+.read, .card-checkbox-div {
     display: flex;
     gap: 5px;
 }
@@ -51,7 +51,7 @@ form {
     display: grid;
     background-color: aqua;
     margin: 3%;
-    grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
     grid-template-rows: auto;
     gap: 20px;
 
