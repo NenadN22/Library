@@ -3,6 +3,7 @@ let formAuthor = document.querySelector('#author');
 let formPages = document.querySelector('#pages');
 let formRead = document.querySelector('#read');
 let id;
+let bookContainer = document.querySelector('.books-container')
 
 const myLibrary = [];
 
@@ -25,6 +26,7 @@ function addBookToLibrary() {
   console.log(newBook)
   myLibrary.push(newBook)
   console.log(myLibrary)
+  makeBookCards()
  
   // take params, create a book then store it in the array
 }
@@ -51,3 +53,16 @@ newBookButton.addEventListener('click', () => {
   dialog.show();
 
 })
+function makeBookCards () {
+
+  myLibrary.forEach(element => {
+      let cardDiv = document.createElement('div');
+      let cardTitle = document.createElement('h3');
+    cardTitle.innerHTML = element.title;
+    cardDiv.appendChild(cardTitle)
+    bookContainer.appendChild(cardDiv)
+    console.log(cardTitle)
+  });
+}
+  
+
