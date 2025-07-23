@@ -53,16 +53,35 @@ newBookButton.addEventListener('click', () => {
   dialog.show();
 
 })
-function makeBookCards () {
+// treba da izvucem podatke iz arraya i da ih pretvorim u card u html
+function makeBookCards(){
+  myLibrary.forEach((element) => {
+    let cardDiv = document.createElement('div');
+    let cardTitle = document.createElement('h3');
+    cardTitle.textContent =`Title: ${element.title}` 
+    let cardAuthor = document.createElement('h3');
+    cardAuthor.textContent = `Author: ${element.author}`;
+    let cardPages = document.createElement('h3');
+    cardPages.textContent = `Pages: ${element.pages}`;
+    let cardRead = document.createElement('input');
+    cardRead.setAttribute('type','checkbox');
+    cardRead.id = 'cardRead'
+    let cardLabel  = document.createElement('label');
+    cardLabel.htmlFor = 'cardRead';
+    cardLabel.textContent = "Read";
+    let cardReadDiv = document.createElement('div');
+    cardReadDiv.classList.add('read')
+    cardRead.checked = element.read;
+    cardDiv.appendChild(cardTitle);
+    cardDiv.appendChild(cardAuthor);
+    cardDiv.appendChild(cardPages);
+    cardReadDiv.appendChild(cardLabel);
+    cardReadDiv.appendChild(cardRead);  
+    cardDiv.appendChild(cardReadDiv);
+    cardDiv.classList.add('Card-Div');
+    cardDiv.dataset.id = element.id;
+    console.log(cardDiv.dataset.id);
 
-  myLibrary.forEach(element => {
-      let cardDiv = document.createElement('div');
-      let cardTitle = document.createElement('h3');
-    cardTitle.innerHTML = element.title;
-    cardDiv.appendChild(cardTitle)
-    bookContainer.appendChild(cardDiv)
-    console.log(cardTitle)
-  });
+    bookContainer.appendChild(cardDiv);
+  })
 }
-  
-
