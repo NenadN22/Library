@@ -30,12 +30,7 @@ function addBookToLibrary() {
  
   // take params, create a book then store it in the array
 }
-let Book1 = new Book ('Mir','Nenad',333,'yes')
-let Book2 = new Book ('Dir','Menad',333,'yes')
-let Book3 = new Book ('Lir','Nenad',333,'yes')
-myLibrary.push(Book1)
-myLibrary.push(Book2)
-myLibrary.push(Book3)
+
 for(let i = 0 ;  i < myLibrary.length; i++) {
   let key = myLibrary[i]
   console.log(key)
@@ -53,35 +48,59 @@ newBookButton.addEventListener('click', () => {
   dialog.show();
 
 })
+let cardDiv ;
 // treba da izvucem podatke iz arraya i da ih pretvorim u card u html
 function makeBookCards(){
-  myLibrary.forEach((element) => {
-    let cardDiv = document.createElement('div');
+  myLibrary.forEach((element,index) => { 
+    if (index === myLibrary.length - 1) {
+    cardDiv = document.createElement('div');
     let cardTitle = document.createElement('h3');
     cardTitle.textContent =`Title: ${element.title}` 
     let cardAuthor = document.createElement('h3');
     cardAuthor.textContent = `Author: ${element.author}`;
     let cardPages = document.createElement('h3');
     cardPages.textContent = `Pages: ${element.pages}`;
-    let cardRead = document.createElement('input');
-    cardRead.setAttribute('type','checkbox');
-    cardRead.id = 'cardRead'
-    let cardLabel  = document.createElement('label');
-    cardLabel.htmlFor = 'cardRead';
-    cardLabel.textContent = "Read";
-    let cardReadDiv = document.createElement('div');
-    cardReadDiv.classList.add('read')
-    cardRead.checked = element.read;
+    let cardReadText = document.createElement('h3');
+    if(element.read) {
+      cardReadText.textContent = 'Read: Yes';
+      
+     } else  {
+        cardReadText.textContent = 'Read: No';
+     }
+    cardReadText.id = 'cardRead'
+    let cardButtonsDiv = document.createElement('div');
+    let cardDelete = document.createElement('button');
+    cardDelete.classList.add('delete-button')
+    let cardReadButton = document.createElement('button');
+    cardButtonsDiv.classList.add('cardButtonsDiv');
+    cardReadButton.innerHTML += '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>check-bold</title><path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" /></svg>'
+    cardDelete.innerHTML +=   '<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><title>trash-can</title><path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M9,8H11V17H9V8M13,8H15V17H13V8Z" /></svg>';
+    cardButtonsDiv.appendChild(cardReadButton);
+    cardButtonsDiv.appendChild(cardDelete);
+
     cardDiv.appendChild(cardTitle);
     cardDiv.appendChild(cardAuthor);
     cardDiv.appendChild(cardPages);
-    cardReadDiv.appendChild(cardLabel);
-    cardReadDiv.appendChild(cardRead);  
-    cardDiv.appendChild(cardReadDiv);
+    cardDiv.appendChild(cardReadText);
+    cardDiv.appendChild(cardButtonsDiv);
     cardDiv.classList.add('Card-Div');
     cardDiv.dataset.id = element.id;
     console.log(cardDiv.dataset.id);
-
     bookContainer.appendChild(cardDiv);
+    deleteDiv();
+    }
   })
 }
+let cardDeleteButtons = document.getElementsByClassName('delete-button');
+// let cardDivId =  document.getElementById(element.id)
+
+function deleteDiv() {
+  for(let i = 0;  i < cardDeleteButtons.length; i++ ) {
+    cardDeleteButtons[i].addEventListener('click', function () {
+      cardDiv.remove()
+
+    })
+  }
+  
+}
+

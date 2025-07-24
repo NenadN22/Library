@@ -42,6 +42,10 @@ form {
     transform: translate(-50%,-50%);
 
 }
+svg {
+    width: 20px;
+}
+button
 .card {
     background-color: rgb(139, 139, 139);
     padding: 1em;
@@ -60,5 +64,14 @@ form {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    align-items: center;
 }
-
+.Card-Div button {
+    width: 35px;
+    padding: 5px;
+    border: 1px solid black;
+}
+.cardButtonsDiv {
+    display: flex;
+    gap: 10px;
+}
