@@ -48,12 +48,11 @@ newBookButton.addEventListener('click', () => {
   dialog.show();
 
 })
-let cardDiv ;
 // treba da izvucem podatke iz arraya i da ih pretvorim u card u html
 function makeBookCards(){
   myLibrary.forEach((element,index) => { 
     if (index === myLibrary.length - 1) {
-    cardDiv = document.createElement('div');
+    let cardDiv = document.createElement('div');
     let cardTitle = document.createElement('h3');
     cardTitle.textContent =`Title: ${element.title}` 
     let cardAuthor = document.createElement('h3');
@@ -87,20 +86,9 @@ function makeBookCards(){
     cardDiv.dataset.id = element.id;
     console.log(cardDiv.dataset.id);
     bookContainer.appendChild(cardDiv);
-    deleteDiv();
     }
   })
 }
 let cardDeleteButtons = document.getElementsByClassName('delete-button');
 // let cardDivId =  document.getElementById(element.id)
-
-function deleteDiv() {
-  for(let i = 0;  i < cardDeleteButtons.length; i++ ) {
-    cardDeleteButtons[i].addEventListener('click', function () {
-      cardDiv.remove()
-
-    })
-  }
-  
-}
 
