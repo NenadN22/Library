@@ -27,6 +27,7 @@ function addBookToLibrary() {
   myLibrary.push(newBook)
   console.log(myLibrary)
   makeBookCards()
+  
  
   // take params, create a book then store it in the array
 }
@@ -76,7 +77,6 @@ function makeBookCards(){
     cardDelete.innerHTML +=   '<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><title>trash-can</title><path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M9,8H11V17H9V8M13,8H15V17H13V8Z" /></svg>';
     cardButtonsDiv.appendChild(cardReadButton);
     cardButtonsDiv.appendChild(cardDelete);
-
     cardDiv.appendChild(cardTitle);
     cardDiv.appendChild(cardAuthor);
     cardDiv.appendChild(cardPages);
@@ -86,9 +86,32 @@ function makeBookCards(){
     cardDiv.dataset.id = element.id;
     console.log(cardDiv.dataset.id);
     bookContainer.appendChild(cardDiv);
+    deleteCard();
+    
     }
   })
 }
-let cardDeleteButtons = document.getElementsByClassName('delete-button');
-// let cardDivId =  document.getElementById(element.id)
+
+function deleteCard () {
+  let deleteButtons = document.querySelectorAll('.delete-button')
+  deleteButtons.forEach((button)  =>  {
+    button.addEventListener('click', () =>{
+      let parentElement = button.parentNode
+      let grandParentElement = parentElement.parentNode
+      grandParentElement.remove()
+      console.log(grandParentElement.dataset.id)
+      myLibrary.forEach((element) => {
+        if(grandParentElement.dataset.id === element.id) {
+          myLibrary.splice(element,1)
+          console.log(myLibrary)
+        }
+    });
+  }
+  )}
+)}
+
+
+
+
+
 
