@@ -27,9 +27,7 @@ function addBookToLibrary() {
   makeBookCards()
 }
 
-for(let i = 0 ;  i < myLibrary.length; i++) {
-  let key = myLibrary[i]
-}
+
 const form = document.querySelector('.form')
 const dialog = document.querySelector('#dialog');
 const newBookButton = document.querySelector('.new-book-button');
