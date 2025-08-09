@@ -23,19 +23,12 @@ function addBookToLibrary() {
   newBook.pages = formPages.value;
   newBook.read = formRead.checked;
   newBook.id = crypto.randomUUID();
-  console.log(newBook)
   myLibrary.push(newBook)
-  console.log(myLibrary)
   makeBookCards()
-  
- 
-  // take params, create a book then store it in the array
 }
 
 for(let i = 0 ;  i < myLibrary.length; i++) {
   let key = myLibrary[i]
-  console.log(key)
-  console.log(key.title)
 }
 const form = document.querySelector('.form')
 const dialog = document.querySelector('#dialog');
@@ -49,7 +42,7 @@ newBookButton.addEventListener('click', () => {
   dialog.show();
 
 })
-// treba da izvucem podatke iz arraya i da ih pretvorim u card u html
+
 function makeBookCards(){
   myLibrary.forEach((element,index) => { 
     if (index === myLibrary.length - 1) {
@@ -89,7 +82,6 @@ function makeBookCards(){
     cardDiv.appendChild(cardButtonsDiv);
     cardDiv.classList.add('Card-Div');
     cardDiv.dataset.id = element.id;
-    console.log(cardDiv.dataset.id);
     deleteCard();
     cardReadButton.addEventListener('click', ()  => { 
       let readText = cardDiv.querySelector('.cardRead');
@@ -118,9 +110,7 @@ function deleteCard () {
       console.log(grandParentElement.dataset.id)
       myLibrary.forEach((element) => {
         if(grandParentElement.dataset.id === element.id) {
-          console.log(element)
           myLibrary.splice(element,1)
-          console.log(myLibrary)
         }
     });
   }
