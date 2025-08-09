@@ -61,17 +61,22 @@ function makeBookCards(){
     let cardPages = document.createElement('h3');
     cardPages.textContent = `Pages: ${element.pages}`;
     let cardReadText = document.createElement('h3');
-    if(element.read) {
+    bookContainer.appendChild(cardDiv)
+   
+    if(element.read === true) {
       cardReadText.textContent = 'Read: Yes';
+      cardDiv.style.backgroundImage = 'linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%)';
       
      } else  {
         cardReadText.textContent = 'Read: No';
+        cardDiv.style.backgroundImage = 'linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%)';
      }
-    cardReadText.id = 'cardRead'
+    cardReadText.classList.add('cardRead')
     let cardButtonsDiv = document.createElement('div');
     let cardDelete = document.createElement('button');
     cardDelete.classList.add('delete-button')
     let cardReadButton = document.createElement('button');
+    cardReadButton.classList.add('read-button')
     cardButtonsDiv.classList.add('cardButtonsDiv');
     cardReadButton.innerHTML += '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>check-bold</title><path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" /></svg>'
     cardDelete.innerHTML +=   '<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><title>trash-can</title><path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M9,8H11V17H9V8M13,8H15V17H13V8Z" /></svg>';
@@ -85,9 +90,20 @@ function makeBookCards(){
     cardDiv.classList.add('Card-Div');
     cardDiv.dataset.id = element.id;
     console.log(cardDiv.dataset.id);
-    bookContainer.appendChild(cardDiv);
     deleteCard();
-    
+    cardReadButton.addEventListener('click', ()  => { 
+      let readText = cardDiv.querySelector('.cardRead');
+      if (readText.textContent === 'Read: Yes')  {
+        readText.textContent = 'Read: No' ;
+        cardDiv.style.backgroundImage = 'linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%)';
+        
+
+      } else {
+        readText.textContent = 'Read: Yes';
+        cardDiv.style.backgroundImage = 'linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%)';
+        
+      }
+    });
     }
   })
 }
@@ -102,6 +118,7 @@ function deleteCard () {
       console.log(grandParentElement.dataset.id)
       myLibrary.forEach((element) => {
         if(grandParentElement.dataset.id === element.id) {
+          console.log(element)
           myLibrary.splice(element,1)
           console.log(myLibrary)
         }
@@ -109,9 +126,5 @@ function deleteCard () {
   }
   )}
 )}
-
-
-
-
 
 
